@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <nav className="nav">
             <div className="nav-left">
-                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={35} size={35} />
+                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={30} size={30} />
                 <Link to="/">
                     <h1>Spotify</h1>
                 </Link>

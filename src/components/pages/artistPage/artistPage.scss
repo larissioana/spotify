@@ -153,13 +153,10 @@
             margin-top: 2rem;
             background: none;
             border-radius: none;
-            display: flex;
-            justify-content: center;
-            height: auto;
+            height: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            place-content: center;
-            place-items: center;
+            overflow-y: hidden;
+            width: 100%;
         }
     }
 }

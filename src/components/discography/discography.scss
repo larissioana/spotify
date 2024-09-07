@@ -73,9 +73,12 @@
         {
             justify-content: center;
             align-items: center;
+
             .album-item
             {
-                height: 20rem;
+                height: auto;
+                display: flex;
+               
             }
         }
     }
