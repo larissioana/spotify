@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import './dashboard.scss';
 import useFetchArtists from '../../useFetchArtist';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -40,5 +40,4 @@ const Dashboard = () => {
         </div>
     );
 };
-
-export default Dashboard
+export default memo(Dashboard);

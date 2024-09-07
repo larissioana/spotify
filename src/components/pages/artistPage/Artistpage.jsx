@@ -1,14 +1,18 @@
 import './artistPage.scss'
+import React, { Suspense, memo, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import Spinner from '../../spinner/Spinner'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import useFetchArtistDetails from '../../../useFetchArtistDetails'
 import verifiedIcon from '../../../assets/icons8-verified-48.png';
-import Discography from '../../discography/Discography'
+const Discography = React.lazy(() => import('../../discography/Discography'));
+
 import { truncateText, stripHtmlTags } from '../../../utils'
 
 const Artistpage = () => {
+    const [backgroundImageLoaded, setBackgroundImageLoaded] = useState(false);
+    const [trackIframesLoaded, setTrackIframesLoaded] = useState({});
     const { id } = useParams();
     const { data, loading, error } = useFetchArtistDetails(id);
 
@@ -16,6 +20,29 @@ const Artistpage = () => {
     const backgroundImage = overview?.data?.artist?.visuals?.headerImage?.sources[0]?.url;
 
 
+    useEffect(() => {
+        if (backgroundImage) {
+            const img = new Image();
+            img.src = backgroundImage;
+            img.onload = () => setBackgroundImageLoaded(true);
+        }
+    }, [backgroundImage]);
+
+    useEffect(() => {
+        if (overview?.data?.artist?.discography?.topTracks?.items) {
+            const tracks = overview.data.artist.discography.topTracks.items;
+            tracks.forEach((track) => {
+                const iframe = new Image();
+                iframe.src = `https://open.spotify.com/embed/track/${track.track.id}`;
+                iframe.onload = () => {
+                    setTrackIframesLoaded((prevState) => ({
+                        ...prevState,
+                        [track.track.id]: true,
+                    }));
+                };
+            });
+        }
+    }, [overview]);
     if (loading) return <div className="loading"><Spinner /></div>;
     if (error) return <p className="error">Error: {error.message}</p>;
 
@@ -30,7 +57,11 @@ const Artistpage = () => {
                 <div className="artist-overview">
                     <div
                         className="background-image"
-                        style={{ backgroundImage: `url(${backgroundImage})` }}
+                        style={{
+                            backgroundImage: backgroundImageLoaded ? `url(${backgroundImage})` : 'none',
+                            opacity: backgroundImageLoaded ? 1 : 0,
+                            transition: 'opacity 0.5s ease-in-out',
+                        }}
                     >
                         {
                             overview?.data?.artist?.profile?.verified === true &&
@@ -51,7 +82,7 @@ const Artistpage = () => {
                             overview.data.artist.discography.topTracks.items.map((track, index) => {
                                 const { name, } = track;
                                 const trackId = track.track.id;
-                                return <div key={index} className="songs-container">
+                                return <div key={index} className="songs-container" style={{ minHeight: '90px', minWidth: '300px' }}>
                                     <iframe
                                         src={`https://open.spotify.com/embed/track/${trackId}`}
                                         width="300"
@@ -61,6 +92,10 @@ const Artistpage = () => {
                                         allowFullScreen
                                         title={name}
                                         loading="eager"
+                                        style={{
+                                            opacity: trackIframesLoaded ? 1 : 0,
+                                            transition: 'opacity 0.5s ease-in-out',
+                                        }}
                                     ></iframe>
                                 </div>
                             })
@@ -84,10 +119,12 @@ const Artistpage = () => {
                 </div>
             </div >
             <div className="albums-wrapper">
-                <Discography discography={discography} />
+                <Suspense fallback={<Spinner />}>
+                    <Discography discography={discography} />
+                </Suspense>
             </div>
         </div >
     )
 }
 
-export default Artistpage
+export default memo(Artistpage);
