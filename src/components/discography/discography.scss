@@ -1,0 +1,83 @@
+.albums 
+{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    column-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+
+    h1 
+    {
+        font-size: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    .albums-flex-container
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 1rem;
+    
+
+    .album-item 
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .4rem;
+        padding-bottom: 1rem;
+        align-items: flex-start;
+        height: auto;
+
+        img 
+        {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+            object-position: center;
+        }
+
+        h3
+        {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: lighter;
+            width: 100%;
+        }
+
+        p 
+        {
+            color: rgb(178, 174, 174);
+            font-size: clamp(1rem, 2vw, 1.1rem);
+
+            span 
+            {
+                color: rgb(137, 137, 142);
+            }
+        }
+    }
+}
+}
+
+@media screen and (max-width: 768px)
+{
+    .albums
+    {
+        justify-content: center;
+        align-items: center;
+        .albums-flex-container
+        {
+            justify-content: center;
+            align-items: center;
+            .album-item
+            {
+                height: 20rem;
+            }
+        }
+    }
+}
+
