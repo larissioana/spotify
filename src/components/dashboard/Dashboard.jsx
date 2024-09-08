@@ -6,9 +6,8 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import Spinner from '../spinner/Spinner';
 import { Link } from 'react-router-dom';
 
-
 const Dashboard = () => {
-    const ids = '3TOqt5oJwL9BE2NG9MEwDa,3zhMQz4U8XeOPq1Nphrd6a,3RNrq3jvMZxD9ZyoOZbQOD,5eAWCfyUhZtHHtBdNk56l1,1MK0sGeyTNkbefYGj673e9,6e8ISIsI7UQZPyEorefAhK,4OAddazJM576euUnFSvXSL,6RZUqkomCmb8zCRqc9eznB,6wWVKhxIU2cEi0K81v7HvP,3qm84nBOXUEQ2vnTfUTTFC,7MqnCTCAX6SsIYYdJCQj9B,3ycxRkcZ67ALN3GQJ57Vig';
+    const ids = '3TOqt5oJwL9BE2NG9MEwDa,3zhMQz4U8XeOPq1Nphrd6a,2ye2Wgw4gimLv2eAKyk1NB,5eAWCfyUhZtHHtBdNk56l1,2yEwvVSSSUkcLeSTNyHKh8,05fG473iIaoy82BF1aGhL8,36QJpDe2go2KgaRleHCDTp,1MK0sGeyTNkbefYGj673e9,4OAddazJM576euUnFSvXSL,6olE6TJLqED3rqDCT0FyPh,3RNrq3jvMZxD9ZyoOZbQOD,6e8ISIsI7UQZPyEorefAhK,6RZUqkomCmb8zCRqc9eznB,6wWVKhxIU2cEi0K81v7HvP,3qm84nBOXUEQ2vnTfUTTFC';
     const { data, loading, error } = useFetchArtists(ids);
     const [loadedImages, setLoadedImages] = useState(new Set());
 
@@ -20,7 +19,7 @@ const Dashboard = () => {
         if (data && data.artists) {
             const head = document.head;
             data.artists.forEach((artist) => {
-                const largeImage = artist?.images.find(image => image.width === 640)?.url;
+                const largeImage = artist?.images.find(image => image.width === 640)?.url || artist?.images.find(image => image.width === 600)?.url;
                 if (largeImage) {
                     const link = document.createElement('link');
                     link.rel = 'preload';
@@ -41,7 +40,7 @@ const Dashboard = () => {
             <div className="dashboard-flex-container">
                 {
                     data && data.artists && data.artists.map((artist) => {
-                        const largeImage = artist?.images.find(image => image.width === 640)?.url;
+                        const largeImage = artist?.images.find(image => image.width === 640)?.url || artist?.images.find(image => image.width === 600)?.url;
 
                         return <div key={artist.id} className="artists">
                             {data &&
