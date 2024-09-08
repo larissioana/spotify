@@ -11,13 +11,13 @@ const Navbar = () => {
     return (
         <nav className="nav">
             <div className="nav-left">
-                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={30} size={30} />
+                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={30} height={30} size={30} />
                 <Link to="/">
                     <h1>Spotify</h1>
                 </Link>
             </div>
             <div className="nav-center">
-                <Link to="/">
+                <Link to="/" aria-label="Navigate to home page">
                     <LazyLoadImage effect="blur" src={homeIcon} style={{
                         border: "1px solid #e1dfdf",
                         borderRadius: "50%",
@@ -25,12 +25,14 @@ const Navbar = () => {
                         width: "35px",
                         cursor: "pointer"
                     }}
-                        size={35}
+                        width={30}
+                        height={35}
+                        alt="home icon"
                     />
                 </Link>
                 <form>
-                    <LazyLoadImage effect="blur" src={searchIcon} size={35}
-                        alt=" search" width={20} />
+                    <LazyLoadImage effect="blur" src={searchIcon}
+                        alt="search" width={20} height={20} />
                     <input type="search" placeholder='What do you want to play?' />
                 </form>
             </div>

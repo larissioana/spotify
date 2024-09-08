@@ -28,18 +28,36 @@
                 background-repeat: no-repeat;
                 background-size: cover;
                 height: 50vh;
+                position: relative;
+
+                .artist
+                {
+                    object-fit: cover;
+                    position: absolute;
+                    inset: 0;
+                    transition: opacity .5s ease;
+                    animation: fade 1s ease-in;
+                }
+
+                .artist-title 
+                {
+
+                display: flex;
+                flex-direction: column;
+                gap: .3rem;
+                position: absolute;
+                top: 15%;
+                left: 5%;
 
                 .verified 
                 {
                     display: flex;
                     align-items: center;
                     gap: .3rem;
-                    padding-top: 5rem;
-                    padding-left: 1rem;
 
                     img 
                     {
-                        width: 35px;
+                        object-fit: cover;
                     }
                     p 
                     {
@@ -61,10 +79,14 @@
                     padding-left: 1rem;
                 }
             }
+            }
 
             .biography-container
             {
                 padding: 1rem;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
 
                 h1 
                 {
@@ -83,6 +105,8 @@
                 display: flex;
                 gap: 1rem;
                 padding-top: 1rem;
+                width: 100%;
+                height: 100%;
 
                 img 
                 {
@@ -103,7 +127,7 @@
 
                 .popular 
                 {
-                    font-size: clamp(1.2rem, 2vw, 1.8rem);
+                    font-size: clamp(1.3rem, 3vw, 2.5rem);
                     overflow: hidden;
                 }
 
@@ -117,7 +141,6 @@
                         width: 100%;
                         overflow-y: hidden;
                         border: none;
-                        background: none;
                     }
                 }
             }
@@ -136,6 +159,15 @@
     }
 }
 
+@keyframes fade
+{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 @media screen and (max-width: 1200px)
 {
