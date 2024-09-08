@@ -7,7 +7,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import useFetchArtistDetails from '../../../useFetchArtistDetails'
 import verifiedIcon from '../../../assets/icons8-verified-48.png';
 import { truncateText, stripHtmlTags } from '../../../utils'
-
+import { Helmet } from 'react-helmet-async'
 const Discography = React.lazy(() => import('../../discography/Discography'));
 const Playlist = React.lazy(() => import('../../playlist/Playlist'))
 const Biography = React.lazy(() => import('../../biography/Biography'))
@@ -60,6 +60,9 @@ const Artistpage = () => {
 
     return (
         <div className="artist-details">
+            <Helmet>
+                <title>{overview?.data?.artist?.profile?.name}</title>
+            </Helmet>
             <div className="artist-discography">
                 <div className="artist-overview">
                     <div className="background-image"

@@ -7,6 +7,7 @@ import { extractYearFromIsoString } from '../../utils';
 import AlbumSongs from '../albumSongs/AlbumSongs';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Helmet } from 'react-helmet-async';
 
 const AlbumsTracks = () => {
     const { id } = useParams();
@@ -20,9 +21,13 @@ const AlbumsTracks = () => {
     const releaseDate = data?.data?.album?.date?.isoString;
     const year = extractYearFromIsoString(releaseDate);
 
+    const name = data?.data?.album?.artists?.items[0]?.profile?.name;
 
     return (
         <div className="album-metadata-container" >
+            <Helmet>
+                <title>{name} - {data?.data?.album?.name}</title>
+            </Helmet>
             {
                 data &&
                 <>

@@ -6,10 +6,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Artistpage from './components/pages/artistPage/Artistpage';
 import Spinner from './components/spinner/Spinner';
 import AlbumsTracks from './components/albumTracks/AlbumsTracks';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
-    <>
+    <HelmetProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -18,7 +19,7 @@ function App() {
           <Route path="/album/:id" element={<Suspense fallback={<Spinner />}><AlbumsTracks /></Suspense>} />
         </Routes>
       </BrowserRouter>
-    </>
+    </HelmetProvider>
   )
 }
 
