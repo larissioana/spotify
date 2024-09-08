@@ -18,10 +18,10 @@
                 border-top-left-radius: 2rem;
                 border-top-right-radius: 2rem;
                 justify-content: center;
-                align-items: center;
+                align-items: flex-end;
                 padding: 1rem;
-                position: relative;
 
+                background-color: orange;
                 .image-container
                 {
                     max-width: 300px;
@@ -41,6 +41,10 @@
                     gap: .5rem;
                     flex: 1;
                     height: 300px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
                    
                     .album-name 
                     {
@@ -86,10 +90,14 @@
     {
         flex-direction: column;
         gap: 2rem;
+        align-items: center;
 
         .image-container{
             height: 300px;
-
+            justify-content: flex-start;
+            align-items: flex-start;
+       
+            flex: 0;
             img 
             {
                 height: 300px;
@@ -117,6 +125,7 @@
                 width: 100%;
                 height: 300px;
             }
+
         }
     }
 }
