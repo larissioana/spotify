@@ -29,15 +29,29 @@ const AlbumsTracks = () => {
                         color: bg === "#F0F0F0" ? "black" : "inherit"
                     }}>
                         <div className="image-container">
-                            <LazyLoadImage effect="blur" src={cover} alt={item.profile.name} width={"100%"} height={"100%"} />
+                            <LazyLoadImage effect="blur" src={cover} alt={item.profile.name} loading="lazy" width={"100%"} height={"100%"} />
                         </div>
                         <div className="album-details-flex-container">
-                            <p className="type">{data.data.album.type}</p>
-                            <h2 className="album-name">{data.data.album.name}</h2>
+                            {
+                                data.data.album.type &&
+                                <p className="type">{data.data.album.type}</p>
+                            }
+                            {data.data.album.name &&
+                                <h2 className="album-name">{data.data.album.name}</h2>
+                            }
                             <ul className="album-more-details">
-                                <li className="artist-name">{item.profile.name}</li>
-                                <li className="year"> {year}</li>
-                                <li className="totalTracks"> {data.data.album.tracks.totalCount} songs </li>
+                                {
+                                    item.profile.name &&
+
+                                    <li className="artist-name">{item.profile.name}</li>
+                                }
+                                {
+                                    year &&
+                                    <li className="year"> {year}</li>
+                                }
+                                {data.data.album.tracks.totalCount &&
+                                    <li className="totalTracks"> {data.data.album.tracks.totalCount} songs </li>
+                                }
                             </ul>
                         </div>
                     </div>

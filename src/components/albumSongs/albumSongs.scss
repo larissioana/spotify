@@ -2,21 +2,23 @@
 {
     display: flex;
     flex-direction: column;
-    padding:1rem;
-    gap: 1rem;
-    overflow: hidden;
+    padding: 1rem;;
+    gap: 2rem;
+    width: 100%;
+
 
     .songs-flex-container 
     {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 1rem;
+        gap: 1.5rem;
+        overflow: hidden;
 
         p 
         {
             font-size: clamp(1rem, 2vw, 1.1rem);
-            text-align: center;
+            text-align: center;           
         }
     }
 }
