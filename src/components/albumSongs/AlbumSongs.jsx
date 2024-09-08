@@ -1,5 +1,5 @@
 import './albumSongs.scss';
-import useFetchSongs from '../../usefetchSongs'
+import useFetchSongs from '../../usefetchSongs';
 import { useParams } from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
 import { formatDuration } from '../../utils';
