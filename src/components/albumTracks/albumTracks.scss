@@ -1,0 +1,102 @@
+
+
+    .album-metadata-container
+    {
+        width: 80%;
+        margin: 0 auto;
+       
+
+            .album-flex 
+            {
+                display: flex;
+                column-gap: 2rem;
+                width: 100%;
+                border-top-left-radius: 2rem;
+                border-top-right-radius: 2rem;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+                position: relative;
+ 
+                .image-container 
+                {
+                    max-width: 300px; 
+                    max-height: 300px;
+                    position: relative;
+                    overflow: hidden;
+                
+                    img 
+                    {
+                        width: 100%;
+                        object-fit: cover;
+                        height: 100%;                       
+                    }
+                }
+
+                .album-details-flex-container
+                {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+                   
+                    .album-name 
+                    {
+                        font-size: clamp(1.4rem, 3vw, 2.2rem);
+                        width: 100%;
+                    }
+
+                    .type 
+                    {
+                       font-size: clamp(1rem, 2vw, 1.1rem);
+                    }
+                .album-more-details
+                {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    column-gap: 1.5rem;
+                    row-gap: .3rem;
+
+                    .artist-name 
+                    {
+                        font-weight: bold;
+                        font-size: clamp(1.1rem, 2vw, 1.2rem);
+                        list-style: none;
+                    }
+                }
+                }
+            }
+
+            .songs-container
+            {
+                padding-top: 2rem;
+            }
+            
+        }
+
+@media screen and (max-width: 600px)
+{
+.album-metadata-container
+{
+ .album-flex
+    {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+}
+}
+
+@media screen and (max-width: 400px)
+{
+    .album-metadata-container
+    {
+        .album-flex
+        {
+            img 
+            {
+                width: 80%;
+            }
+        }
+    }
+}

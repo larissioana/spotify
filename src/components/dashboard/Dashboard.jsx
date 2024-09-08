@@ -34,7 +34,7 @@ const Dashboard = () => {
 
     if (loading) return <div className="loading"><Spinner /></div>;
     if (error) return <p classname="error">Error fetching data: {error.message}</p>;
-    console.log({ data })
+
     return (
         <div className="dashboard-container">
             <h1 className="dashboard-title">Popular Artists</h1>

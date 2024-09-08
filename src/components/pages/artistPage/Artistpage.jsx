@@ -6,12 +6,11 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import useFetchArtistDetails from '../../../useFetchArtistDetails'
 import verifiedIcon from '../../../assets/icons8-verified-48.png';
+import { truncateText, stripHtmlTags } from '../../../utils'
 
 const Discography = React.lazy(() => import('../../discography/Discography'));
 const Playlist = React.lazy(() => import('../../playlist/Playlist'))
 const Biography = React.lazy(() => import('../../biography/Biography'))
-
-import { truncateText, stripHtmlTags } from '../../../utils'
 
 
 const Artistpage = () => {
@@ -21,7 +20,6 @@ const Artistpage = () => {
 
     const { overview, discography } = data || {};
     const backgroundImage = overview?.data?.artist?.visuals?.headerImage?.sources[0]?.url;
-
 
     const [isImagePreloaded, setIsImagePreloaded] = useState(false);
 
@@ -48,17 +46,18 @@ const Artistpage = () => {
             });
         }
     }, [overview]);
+
     if (loading) return <div className="loading"><Spinner /></div>;
     if (error) return <p className="error">Error: {error.message}</p>;
 
     const biographyText = overview?.data?.artist?.profile?.biography?.text || '';
     const bgColor = overview?.data?.artist?.visuals?.headerImage?.extractedColors.colorRaw.hex;
-    console.log({ bgColor })
-    const truncatedBiography = truncateText(stripHtmlTags(biographyText), 900);
+
+    const truncatedBiography = stripHtmlTags(biographyText)
     const formatNumber = (number) => new Intl.NumberFormat().format(number);
 
     const monthlyNumber = overview?.data?.artist?.stats?.monthlyListeners;
-    console.log({ overview })
+
     return (
         <div className="artist-details">
             <div className="artist-discography">
@@ -73,6 +72,7 @@ const Artistpage = () => {
                                     src={backgroundImage}
                                     width="100%"
                                     height="100%"
+                                    loading="lazy"
                                     sizes="(max-width: 600px) 160px, (max-width: 900px) 320px, 640px"
                                     alt={overview.data.artist.profile.name}
                                 />
@@ -106,8 +106,6 @@ const Artistpage = () => {
                                 return <Suspense key={index}>
                                     <Playlist name={name} trackId={trackId} trackIframesLoaded={trackIframesLoaded} />
                                 </Suspense>
-
-
                             })
                         }
                     </div>
@@ -117,9 +115,9 @@ const Artistpage = () => {
                 </div>
             </div >
             <div className="albums-wrapper">
-                {/*   <Suspense fallback={<Spinner />}>
+                <Suspense >
                     <Discography discography={discography} />
-                </Suspense> */}
+                </Suspense>
             </div>
         </div >
     )

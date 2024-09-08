@@ -32,20 +32,32 @@ const Playlist = ({ trackId, name, trackIframesLoaded }) => {
             style={{ height: '90px', width: '100%', overflow: "hidden" }}
             ref={iframeRef}
         >
-            {isInView &&
+            {trackIframesLoaded ?
                 <iframe
                     src={`https://open.spotify.com/embed/track/${trackId}`}
                     width={"100 %"}
                     height={"100%"}
                     className="song"
                     allowFullScreen
+                    scrolling="no"
                     title={name || "name of the song"}
-                    loading="eager"
+                    allow="encrypted-media; picture-in-picture"
+                    loading="lazy"
                     style={{
                         opacity: isInView ? 1 : 0,
                         transition: 'opacity 1s ease-in-out',
+                        overflow: "hidden",
+                        display: "block"
                     }}
                 ></iframe>
+                :
+                <div
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        background: "rgba(0,0,0,.9)"
+                    }}
+                ></div>
             }
         </div>
     )
