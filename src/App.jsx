@@ -7,12 +7,14 @@ import Artistpage from './components/pages/artistPage/Artistpage';
 import Spinner from './components/spinner/Spinner';
 import AlbumsTracks from './components/albumTracks/AlbumsTracks';
 import { HelmetProvider } from 'react-helmet-async';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Suspense fallback={<Spinner />}><Dashboard /></Suspense>} />
           <Route path="/artist/:id" element={<Suspense fallback={<Spinner />}><Artistpage /></Suspense>} />
