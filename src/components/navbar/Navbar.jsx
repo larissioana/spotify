@@ -4,14 +4,28 @@ import homeIcon from '../../assets/icons8-home-50.png';
 import searchIcon from '../../assets/icons8-search-50.png';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Navbar = () => {
+    const [input, setInput] = useState("");
+    const navigate = useNavigate();
+
+    const handleInput = (e) => {
+        setInput(e.target.value)
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (input) {
+            navigate(`/search/${input}`)
+        }
+    };
 
     return (
         <nav className="nav">
             <div className="nav-left">
-                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={30} height={30} size={30} />
+                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={30} height={30} />
                 <Link to="/">
                     <h1>Spotify</h1>
                 </Link>
@@ -30,10 +44,9 @@ const Navbar = () => {
                         alt="home icon"
                     />
                 </Link>
-                <form>
-                    <LazyLoadImage effect="blur" src={searchIcon}
-                        alt="search" width={20} height={20} />
-                    <input type="search" placeholder='What do you want to play?' />
+                <form onSubmit={handleSubmit}>
+                    <LazyLoadImage effect="blur" src={searchIcon} alt="search" width={20} height={20} />
+                    <input type="search" placeholder='What do you want to play?' onChange={handleInput} />
                 </form>
             </div>
         </nav>

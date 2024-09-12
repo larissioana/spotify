@@ -3,6 +3,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin; 
+  scrollbar-color: #17181a rgb(32, 32, 32); 
 }
 
 body 

@@ -18,15 +18,14 @@ const AlbumsTracks = () => {
 
     const cover = data?.data?.album?.coverArt?.sources?.[0]?.url;
     const bg = data?.data?.album?.coverArt?.extractedColors?.colorRaw?.hex;
-    const releaseDate = data?.data?.album?.date?.isoString;
-    const year = extractYearFromIsoString(releaseDate);
-
+    const releaseDate = data?.data?.album?.date?.isoString || 'Unknown Release Date';
+    const year = releaseDate !== 'Unknown Release Date' ? extractYearFromIsoString(releaseDate) : null;
     const name = data?.data?.album?.artists?.items[0]?.profile?.name;
 
     return (
         <div className="album-metadata-container" >
             <Helmet>
-                <title>{name} - {data?.data?.album?.name}</title>
+                <title>{`${name || ''} - ${data?.data?.album?.name || ''}`}</title>
             </Helmet>
             {
                 data &&

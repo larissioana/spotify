@@ -53,11 +53,17 @@
             background: none;
             border: none;
             width: 100%;
+            font-size: 16px;
             color: #fff;
 
             &:focus 
             {
                 outline: none;
+            }
+
+            &::placeholder
+            {
+                font-size: .9rem;
             }
         }
        }
@@ -72,6 +78,17 @@
         gap: .5rem;
         display: flex;
         align-items: center;
+
+        .nav-left{
+            img 
+            {
+                width: 25px;
+                height: 25px;
+                display: flex;
+                align-self: center;
+                vertical-align: middle;
+            }
+        }
 
         
         .nav-center
@@ -89,17 +106,7 @@
         
             form 
             {
-                width: 15rem;
-
-                input 
-                {
-                    overflow: hidden;
-                    &::placeholder
-                    {
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                    }
-                }
+                width: 20rem;
             }
         }
 
