@@ -54,10 +54,9 @@ const SearchPage = () => {
                                             <LazyLoadImage effect={'blur'} src={item.data.coverArt.sources[0].url} alt={item.data.artists.items[0].profile.name} />
                                         </div>
                                     </a>
-                                    <h4>{item.data.name.substring(0, 18) + "..."}</h4>
+                                    <h4>{item.data.name}</h4>
                                     <div className="details-container">
-                                        <p>{item.data.date.year}</p>
-                                        <h5>{item.data.artists.items[0].profile.name.substring(0, 20) + "..."}</h5>
+                                        {item.data.date.year}  {item.data.artists.items[0].profile.name}
                                     </div>
                                 </>
                             }
@@ -89,7 +88,7 @@ const SearchPage = () => {
                                         </div>
                                     </a>
                                     <h4>{item?.data?.name.substring(0, 20) + "..."}</h4>
-                                    <p>{item?.data?.publisher?.name.substring(0, 20) + "..."}</p>
+                                    <p>{item?.data?.publisher?.name.substring(0, 25) + "..."}</p>
                                 </>
                             }
                         </div>
