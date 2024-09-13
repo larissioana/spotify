@@ -4,6 +4,7 @@ import useFetchSearch from '../../../useFetchSearch';
 import Spinner from '../../spinner/Spinner';
 import Categories from '../../categories/Categories';
 import './searchpage.scss';
+import { Helmet } from 'react-helmet-async';
 const SearchedResultsCard = React.lazy(() => import('../../searchedResultsCard/SearchedResultsCard'))
 
 const SearchPage = () => {
@@ -55,7 +56,6 @@ const SearchPage = () => {
                                     <img width="100%" height="100%" className="featured-img" alt={"result"} src={item?.data?.images?.items[0]?.sources[0]?.url} />
                                 </div>
                             }).slice(0, 1)}
-
                             <div className="playlist">
                                 {results.topResults.map((item, index) => {
                                     const trackId = item.data.uri.split(':')[2];
@@ -118,7 +118,6 @@ const SearchPage = () => {
                             })}
                         </div>
                     </div>
-
                     <div className="category-wrapper">
                         <h3>Podcasts</h3>
                         <div className="result-items">
@@ -249,6 +248,9 @@ const SearchPage = () => {
 
     return (
         <div className="searched-results-container">
+            <Helmet>
+                <title>Spotify - Search</title>
+            </Helmet>
             <Categories setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory} />
             <div className="search-results">
                 {renderResults()}

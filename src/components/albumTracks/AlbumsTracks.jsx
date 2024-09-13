@@ -67,7 +67,7 @@ const AlbumsTracks = () => {
                                 </div>
                             </div>
 
-                        })
+                        }).splice(0, 1)
                     }
                 </>
             }
