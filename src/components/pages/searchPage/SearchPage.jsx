@@ -11,7 +11,6 @@ const SearchPage = () => {
     const [selectedCategory, setSelectedCategory] = useState(() => {
         return localStorage.getItem('selectedCategory') || 'all';
     });
-
     const { query } = useParams();
     const { loading, error, data } = useFetchSearch(query);
     if (loading) return <div className="loading"><Spinner /></div>;
@@ -66,9 +65,6 @@ const SearchPage = () => {
                                             width="300"
                                             height="380"
                                             frameBorder="0"
-                                            style={{
-                                                background: "none"
-                                            }}
                                             allowtransparency="true"
                                             allow="encrypted-media">
                                         </iframe>
@@ -123,13 +119,16 @@ const SearchPage = () => {
                         <div className="result-items">
                             {results.podcasts.map((item, index) => (
                                 <div key={index} className="result-item">
-                                    <SearchedResultsCard
-                                        image={item?.data?.coverArt?.sources[1]?.url}
-                                        title={item?.data?.name.substring(0, 20) + "..."}
-                                        subTitle={item?.data?.publisher?.name.substring(0, 25) + "..."}
-                                        url={item?.data?.uri ? `https://open.spotify.com/${item.data.uri.split(':')[1]}/${item.data.uri.split(':')[2]}` : ''}
-                                        borderRadius={false}
-                                    />
+                                    {
+                                        item?.data?.coverArt?.sources[1]?.url &&
+                                        <SearchedResultsCard
+                                            image={item?.data?.coverArt?.sources[1]?.url}
+                                            title={item?.data?.name.substring(0, 20) + "..."}
+                                            subTitle={item?.data?.publisher?.name.substring(0, 25) + "..."}
+                                            url={item?.data?.uri ? `https://open.spotify.com/${item.data.uri.split(':')[1]}/${item.data.uri.split(':')[2]}` : ''}
+                                            borderRadius={false}
+                                        />
+                                    }
                                 </div>
                             ))}
                         </div>
@@ -139,13 +138,16 @@ const SearchPage = () => {
                         <div className="result-items">
                             {results.playlists.map((item, index) => (
                                 <div key={index} className="result-item">
-                                    <SearchedResultsCard
-                                        image={item?.data?.images?.items[0]?.sources[0]?.url}
-                                        title={item?.data?.name}
-                                        subTitle={`By ${item.data?.owner?.name}`}
-                                        url={item?.data?.uri ? `https://open.spotify.com/${item.data.uri.split(':')[1]}/${item.data.uri.split(':')[2]}` : ''}
-                                        borderRadius={false}
-                                    />
+                                    {
+                                        item?.data?.images?.items[0]?.sources[0]?.url &&
+                                        <SearchedResultsCard
+                                            image={item?.data?.images?.items[0]?.sources[0]?.url}
+                                            title={item?.data?.name}
+                                            subTitle={`By ${item.data?.owner?.name}`}
+                                            url={item?.data?.uri ? `https://open.spotify.com/${item.data.uri.split(':')[1]}/${item.data.uri.split(':')[2]}` : ''}
+                                            borderRadius={false}
+                                        />
+                                    }
                                 </div>
                             ))}
                         </div>
