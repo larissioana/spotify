@@ -2,7 +2,7 @@ import './categories.scss';
 import { useEffect } from 'react';
 
 const Categories = ({ setSelectedCategory, selectedCategory }) => {
-    const categories = ["albums", "artists", "podcasts", "playlists"];
+    const categories = ["all", "albums", "artists", "podcasts", "playlists"];
 
     const handleSelectedCategory = (category) => {
         setSelectedCategory(category);

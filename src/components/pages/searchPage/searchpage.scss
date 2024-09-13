@@ -23,6 +23,13 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
+            transition: background .5s ease-in;
+            padding: .5rem;
+
+            &:hover {
+                background: #1c1d1e;
+                border-radius: .5rem;
+            }
         }
 
         h4 
@@ -33,22 +40,7 @@
             width: 200px;
         }
 
-        .image-container2 
-        {
-            img 
-            {
-                clip-path: circle();
-                transition: opacity .5s ease-in;
-
-                &:hover 
-                {
-                    opacity: .5;
-                }
-            }
-        }
-
-        .image-container,
-        .image-container2
+        .image-container
         {
             width: 200px;
             height: 200px;
@@ -68,14 +60,6 @@
  
            width: 100%;
            font-size: .9rem;
-           
-        }
-
-        p 
-        {
-            font-size: 1rem;
-            font-weight: lighter;
-            width: 100%;
         }
 
         h5 
@@ -85,4 +69,71 @@
             font-weight: lighter;
         }
     }
+}
+
+.results-wrapper
+{
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .category-wrapper
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 4rem;
+
+        .featured 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            .featured-image 
+            {
+                width: 400px;
+                height: 300px;
+                background-color:#1c1d1e;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: .5rem;
+                .featured-img
+                {
+                    object-fit: cover;
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        }
+
+        .result-items 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .playlist 
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        .result-playlist 
+
+        {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 100px;
+        }
+    }
+    
 }

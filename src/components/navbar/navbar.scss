@@ -48,6 +48,12 @@
         height: 3rem;
         width: 20rem;
 
+        img 
+        {
+            height: 1rem;
+            width: 1rem;
+        }
+
         input 
         {
             background: none;
@@ -55,7 +61,6 @@
             width: 100%;
             font-size: 16px;
             color: #fff;
-
             &:focus 
             {
                 outline: none;

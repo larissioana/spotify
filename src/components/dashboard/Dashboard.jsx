@@ -8,7 +8,6 @@ const Dashboard = () => {
     const ids = '3TOqt5oJwL9BE2NG9MEwDa,3zhMQz4U8XeOPq1Nphrd6a,2ye2Wgw4gimLv2eAKyk1NB,5eAWCfyUhZtHHtBdNk56l1,2yEwvVSSSUkcLeSTNyHKh8,05fG473iIaoy82BF1aGhL8,36QJpDe2go2KgaRleHCDTp,1MK0sGeyTNkbefYGj673e9,4OAddazJM576euUnFSvXSL,6olE6TJLqED3rqDCT0FyPh,3RNrq3jvMZxD9ZyoOZbQOD,6e8ISIsI7UQZPyEorefAhK,6RZUqkomCmb8zCRqc9eznB,6wWVKhxIU2cEi0K81v7HvP,3qm84nBOXUEQ2vnTfUTTFC';
     const { data, loading, error } = useFetchArtists(ids);
     const [loadedImages, setLoadedImages] = useState(new Set());
-    const [isShowAllOpen, setIsShowAllOpen] = useState(false);
 
     const handleImageLoad = useCallback((id) => {
         setLoadedImages(prev => new Set(prev).add(id));

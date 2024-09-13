@@ -11,7 +11,7 @@ const useFetchSearch = (query) => {
             if (!query) return;
 
             const cacheKey = `searchResults_${query}`;
-            const cachedData = localStorage.getItem(cacheKey);
+            const cachedData = sessionStorage.getItem(cacheKey);
 
             if (cachedData) {
                 setData(JSON.parse(cachedData));
@@ -37,7 +37,7 @@ const useFetchSearch = (query) => {
 
             try {
                 const response = await axios.request(options);
-                localStorage.setItem(cacheKey, JSON.stringify(response.data));
+                sessionStorage.setItem(cacheKey, JSON.stringify(response.data));
                 setData(response.data);
             } catch (error) {
                 console.error('Error fetching search data:', error);
