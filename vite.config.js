@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import imagemin from 'vite-plugin-imagemin'
+import compression from 'vite-plugin-compression'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,6 +33,12 @@ export default defineConfig({
           },
         ],
       },
+    }),
+    compression({
+      verbose: true,
+      algorithm: 'gzip',
+      threshold: 10240,
+      deleteOriginalAssets: false,
     }),
   ],
   build: {

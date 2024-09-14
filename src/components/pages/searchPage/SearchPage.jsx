@@ -65,6 +65,7 @@ const SearchPage = () => {
                                             width="300"
                                             height="380"
                                             frameBorder="0"
+                                            title="open in Spotify"
                                             allowtransparency="true"
                                             allow="encrypted-media">
                                         </iframe>

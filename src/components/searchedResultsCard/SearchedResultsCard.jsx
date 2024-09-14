@@ -4,9 +4,9 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 const SearchedResultsCard = ({ image, title, subTitle, year, url, borderRadius }) => {
     return (
         <>
-            <a href={url} target="_blank" rel="noopener noreferrer">
+            <a href={url} target="_blank" rel="noopener noreferrer" aria-label="open in spotify">
                 <div className="image-container">
-                    <LazyLoadImage effect={'blur'} src={image} alt={title} width="100%" height="100%" style={{
+                    <LazyLoadImage effect={'blur'} src={image} alt={title} width="100%" height="100%" loading="lazy" style={{
                         clipPath: borderRadius ? "circle()" : "none"
                     }} />
                 </div>

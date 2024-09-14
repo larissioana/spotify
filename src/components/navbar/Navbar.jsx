@@ -25,14 +25,14 @@ const Navbar = () => {
     return (
         <nav className="nav">
             <div className="nav-left">
-                <LazyLoadImage effect="blur" src={logo} alt="spotify logo" width={30} height={30} />
+                <img effect="blur" src={logo} alt="spotify logo" width={30} height={30} />
                 <Link to="/">
                     <h1>Spotify</h1>
                 </Link>
             </div>
             <div className="nav-center">
                 <Link to="/" aria-label="Navigate to home page">
-                    <LazyLoadImage effect="blur" src={homeIcon} style={{
+                    <img effect="blur" src={homeIcon} style={{
                         border: "1px solid #e1dfdf",
                         borderRadius: "50%",
                         padding: ".5rem",
@@ -45,7 +45,7 @@ const Navbar = () => {
                     />
                 </Link>
                 <form onSubmit={handleSubmit}>
-                    <LazyLoadImage effect="blur" src={searchIcon} alt="search" width={20} height={20} />
+                    <img effect="blur" src={searchIcon} alt="search" width={20} height={20} />
                     <input type="search" placeholder='What do you want to play?' onChange={handleInput} />
                 </form>
             </div>
