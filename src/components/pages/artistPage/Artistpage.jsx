@@ -1,5 +1,5 @@
 import './artistPage.scss'
-import React, { Suspense, memo, useEffect, useState } from 'react';
+import React, { Suspense, memo, useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom'
 import Spinner from '../../spinner/Spinner'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -20,8 +20,10 @@ const Artistpage = () => {
 
     const { overview, discography } = data || {};
     const backgroundImage = overview?.data?.artist?.visuals?.headerImage?.sources[0]?.url;
-
     const [isImagePreloaded, setIsImagePreloaded] = useState(false);
+    const handleImageLoad = useCallback(() => {
+        setIsImagePreloaded(true);
+    }, []);
 
     useEffect(() => {
         if (backgroundImage) {
@@ -64,7 +66,6 @@ const Artistpage = () => {
 
     const monthlyNumber = overview?.data?.artist?.stats?.monthlyListeners;
 
-
     return (
         <div className="artist-details">
             <Helmet>
@@ -82,6 +83,7 @@ const Artistpage = () => {
                                     src={backgroundImage}
                                     width="100%"
                                     height="100%"
+                                    onLoad={() => handleImageLoad()}
                                     sizes="(max-width: 600px) 160px, (max-width: 900px) 320px, 640px"
                                     alt={overview.data.artist.profile.name}
                                 />
