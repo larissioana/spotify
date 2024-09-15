@@ -31,6 +31,11 @@ const Artistpage = () => {
         }
     }, [backgroundImage]);
 
+    React.useEffect(() => {
+        import('../../playlist/Playlist');
+    }, []);
+
+
     useEffect(() => {
         if (overview?.data?.artist?.discography?.topTracks?.items) {
             const tracks = overview.data.artist.discography.topTracks.items;
@@ -43,6 +48,7 @@ const Artistpage = () => {
                         [track.track.id]: true,
                     }));
                 };
+                iframe.remove();
             });
         }
     }, [overview]);
@@ -57,6 +63,7 @@ const Artistpage = () => {
     const formatNumber = (number) => new Intl.NumberFormat().format(number);
 
     const monthlyNumber = overview?.data?.artist?.stats?.monthlyListeners;
+
 
     return (
         <div className="artist-details">
@@ -75,7 +82,6 @@ const Artistpage = () => {
                                     src={backgroundImage}
                                     width="100%"
                                     height="100%"
-                                    loading="lazy"
                                     sizes="(max-width: 600px) 160px, (max-width: 900px) 320px, 640px"
                                     alt={overview.data.artist.profile.name}
                                 />
@@ -101,16 +107,17 @@ const Artistpage = () => {
                         }
                     </div>
                     <div className="playlist">
-                        <h1 className="popular">Top Tracks</h1>
-                        {
-                            overview.data.artist.discography.topTracks.items.map((track, index) => {
-                                const { name, } = track;
-                                const trackId = track.track.id;
-                                return <Suspense key={index}>
-                                    <Playlist name={name} trackId={trackId} trackIframesLoaded={trackIframesLoaded} />
-                                </Suspense>
-                            })
-                        }
+                        <Suspense>
+                            {
+                                overview.data.artist.discography.topTracks.items.map((track, index) => {
+                                    const { name, } = track;
+                                    const trackId = track.track.id;
+                                    return <div key={index}>
+                                        <Playlist name={name} trackId={trackId} trackIframesLoaded={trackIframesLoaded} />
+                                    </div>
+                                }).slice(0, 5)
+                            }
+                        </Suspense>
                     </div>
                     <Suspense>
                         <Biography truncatedBiography={truncatedBiography} overview={overview} />

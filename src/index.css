@@ -14,12 +14,18 @@ body
   color: #E1E1E1;
   font-display: swap;
   font-family: "Titillium Web", sans-serif;
+  font-display: swap 
 }
 
 a 
 {
   text-decoration: none;
   color: inherit;
+}
+
+h1 
+{
+  font-display: swap 
 }
 
 ::-webkit-scrollbar {

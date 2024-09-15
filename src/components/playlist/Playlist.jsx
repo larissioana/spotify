@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, memo } from 'react'
 
-const Playlist = ({ trackId, name, trackIframesLoaded }) => {
+const Playlist = React.memo(({ trackId, name, trackIframesLoaded }) => {
     const [isInView, setIsInView] = useState(false);
     const iframeRef = useRef(null);
 
@@ -35,7 +35,7 @@ const Playlist = ({ trackId, name, trackIframesLoaded }) => {
             {trackIframesLoaded ?
                 <iframe
                     src={`https://open.spotify.com/embed/track/${trackId}`}
-                    width={"100 %"}
+                    width={"100%"}
                     height={"100%"}
                     className="song"
                     allowFullScreen
@@ -61,6 +61,6 @@ const Playlist = ({ trackId, name, trackIframesLoaded }) => {
             }
         </div>
     )
-}
+});
 
 export default Playlist

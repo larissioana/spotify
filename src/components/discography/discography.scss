@@ -30,34 +30,45 @@
         flex-direction: column;
         justify-content: center;
         gap: .4rem;
-        max-width: 300px;
+        width: 300px;
         padding-bottom: 1rem;
-        align-items: flex-start;
-        height: auto;
+        align-items: center;
+        height: 400px;
 
+        .album-wrapper
+        {
+            max-width: 270px;
+            height: 250px;
         img 
         {
             object-fit: cover;
             width: 100%;
-            height: auto;
+            height: 100%;
             object-position: center;
         }
+    }
 
         h3
         {
-            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-size: clamp(1rem, 2vw, 1rem);
             font-weight: lighter;
             width: 100%;
+            max-width: 270px;
+            text-align: center;
         }
 
         p 
         {
             color: rgb(178, 174, 174);
             font-size: clamp(1rem, 2vw, 1.1rem);
+            width: 270px;
+            text-align: center;
 
             span 
             {
                 color: rgb(137, 137, 142);
+                height: 1rem;
+                width: 270px;
             }
         }
     }
