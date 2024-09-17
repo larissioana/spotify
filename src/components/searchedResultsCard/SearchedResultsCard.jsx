@@ -1,7 +1,13 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { useState } from 'react';
 
 const SearchedResultsCard = ({ image, title, subTitle, year, url, borderRadius }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const handleLoad = () => {
+        setIsLoaded(true);
+    };
     return (
         <>
             <a href={url} target="_blank" rel="noopener noreferrer" aria-label="open in spotify">
