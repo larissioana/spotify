@@ -61,7 +61,7 @@ const Artistpage = () => {
     const biographyText = overview?.data?.artist?.profile?.biography?.text || '';
     const bgColor = overview?.data?.artist?.visuals?.headerImage?.extractedColors.colorRaw.hex;
 
-    const truncatedBiography = stripHtmlTags(truncateText(biographyText, 900))
+    const truncatedBiography = stripHtmlTags(truncateText(biographyText, 660))
     const formatNumber = (number) => new Intl.NumberFormat().format(number);
 
     const monthlyNumber = overview?.data?.artist?.stats?.monthlyListeners;

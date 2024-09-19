@@ -32,7 +32,7 @@ const Navbar = () => {
             </div>
             <div className="nav-center">
                 <Link to="/" aria-label="Navigate to home page">
-                    <img effect="blur" src={homeIcon} style={{
+                    <img src={homeIcon} style={{
                         border: "1px solid #e1dfdf",
                         borderRadius: "50%",
                         padding: ".5rem",
@@ -41,11 +41,12 @@ const Navbar = () => {
                     }}
                         width={30}
                         height={35}
+                        className="home-icon"
                         alt="home icon"
                     />
                 </Link>
                 <form onSubmit={handleSubmit}>
-                    <img effect="blur" src={searchIcon} alt="search" width={20} height={20} />
+                    <img src={searchIcon} alt="search" width={20} height={20} />
                     <input type="search" placeholder='What do you want to play?' onChange={handleInput} />
                 </form>
             </div>

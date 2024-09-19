@@ -12,6 +12,8 @@
         height: 100vh;
         overflow-y: auto;
         overflow-x: hidden;
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
         background: rgb(22, 22, 22);
         border-radius: 2rem;
         width: 70%;
@@ -157,6 +159,8 @@
     {
         height: 100vh;
         overflow-y: auto;
+        scrollbar-width: none; 
+        -ms-overflow-style: none; 
         overflow-x: hidden;
         display: flex;
         flex-direction: column;
@@ -185,10 +189,19 @@
         .artist-discography
         {
             width: 100%;
+
+            .artist-overview 
+            {
+                .background-image
+                {
+                    height: 30vh;
+               
+                }
+            }
+
         }
 
         .albums-wrapper{
-            margin-top: 2rem;
             background: none;
             border-radius: none;
             height: 100%;
