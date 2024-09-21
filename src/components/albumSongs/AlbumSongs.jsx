@@ -9,10 +9,6 @@ const AlbumSongs = () => {
     const { loading, error, data } = useFetchSongs(id);
     if (loading) return <div className="loading"><Spinner /></div>;
     if (error) return <p className="error">Error: {error.message}</p>;
-    const numbers = document.querySelectorAll('.number');
-    numbers.forEach((num, index) => {
-        num.textContent = (index + 1).toString().padStart(2, '0');
-    });
 
     return (
         <div className="album-songs-wrapper">
@@ -20,7 +16,7 @@ const AlbumSongs = () => {
                 data.data.album.tracks.items.map((item, index) => {
                     return <div key={index}>
                         <div className="songs-flex-container">
-                            <p className="number">{index}</p>
+                            <p className="number">{index + 1}</p>
                             <p>{item.track.name}</p>
                             <p>{formatDuration(item.track.duration.totalMilliseconds)}</p>
                         </div>
