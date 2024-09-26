@@ -68,11 +68,6 @@
             {
                 outline: none;
             }
-
-            &::placeholder
-            {
-                font-size: .9rem;
-            }
         }
        }
     }
@@ -122,19 +117,14 @@
 {
     .nav
     {
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0rem;
         .nav-center
         {
             form 
             {
-                width: 10rem;
-
-                input 
-                {
-                    &::placeholder
-                    {
-                        text-overflow: ellipsis;
-                    }
-                }
+                width: 8rem;
             }
         }
     }

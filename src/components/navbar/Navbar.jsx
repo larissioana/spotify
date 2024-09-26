@@ -5,10 +5,29 @@ import searchIcon from '../../assets/icons8-search-50.png';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Navbar = () => {
     const [input, setInput] = useState("");
+    const [placeholder, setPlaceholder] = useState("What do you want to play?");
+
+    const updatePlaceholder = () => {
+        if (window.innerWidth <= 447) {
+            setPlaceholder("Search...");
+        } else {
+            setPlaceholder("What do you want to play?");
+        }
+    };
+
+    useEffect(() => {
+        updatePlaceholder();
+
+        window.addEventListener('resize', updatePlaceholder);
+
+        return () => {
+            window.removeEventListener('resize', updatePlaceholder);
+        };
+    }, []);
     const navigate = useNavigate();
 
     const handleInput = (e) => {
@@ -47,7 +66,7 @@ const Navbar = () => {
                 </Link>
                 <form onSubmit={handleSubmit}>
                     <img src={searchIcon} alt="search" width={20} height={20} />
-                    <input type="search" placeholder='What do you want to play?' onChange={handleInput} />
+                    <input type="search" placeholder={placeholder} onChange={handleInput} />
                 </form>
             </div>
         </nav>
