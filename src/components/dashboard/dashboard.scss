@@ -85,6 +85,7 @@
 {
     .dashboard-container
     {
+        overflow-x: hidden;
         .dashboard-flex-container
         {
             grid-template-columns: 1fr 1fr;

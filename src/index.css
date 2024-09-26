@@ -9,7 +9,7 @@
 
 body 
 {
-  overflow-x: hidden!important;
+  overflow-x: hidden;
   background: rgb(5, 5, 5);
   color: #E1E1E1;
   font-display: swap;
