@@ -9,25 +9,7 @@ import { useState, useEffect } from 'react';
 
 const Navbar = () => {
     const [input, setInput] = useState("");
-    const [placeholder, setPlaceholder] = useState("What do you want to play?");
 
-    const updatePlaceholder = () => {
-        if (window.innerWidth <= 447) {
-            setPlaceholder("Search...");
-        } else {
-            setPlaceholder("What do you want to play?");
-        }
-    };
-
-    useEffect(() => {
-        updatePlaceholder();
-
-        window.addEventListener('resize', updatePlaceholder);
-
-        return () => {
-            window.removeEventListener('resize', updatePlaceholder);
-        };
-    }, []);
     const navigate = useNavigate();
 
     const handleInput = (e) => {
@@ -66,7 +48,7 @@ const Navbar = () => {
                 </Link>
                 <form onSubmit={handleSubmit}>
                     <img src={searchIcon} alt="search" width={20} height={20} />
-                    <input type="search" placeholder={placeholder} onChange={handleInput} />
+                    <input type="search" placeholder={"What do you want to play?"} onChange={handleInput} />
                 </form>
             </div>
         </nav>

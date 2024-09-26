@@ -108,6 +108,11 @@
             form 
             {
                 width: 15rem;
+
+                input 
+                {
+                    text-overflow: ellipsis;
+                }
             }
         }
     }
@@ -125,6 +130,11 @@
             form 
             {
                 width: 8rem;
+
+                input 
+                {
+                    text-overflow: ellipsis;
+                }
             }
         }
     }
